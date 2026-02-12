@@ -7,13 +7,15 @@ public class Libro {
     private String titulo;
     private String autor;
     private String isbn;
+    private String editorial;
     private int añoPublicacion;
     private boolean disponible;
     
-    public Libro(String titulo, String autor, String isbn, int añoPublicacion) {
+    public Libro(String titulo, String autor, String isbn, String editorial, int añoPublicacion) {
         this.titulo = titulo;
         this.autor = autor;
         this.isbn = isbn;
+        this.editorial = editorial;
         this.añoPublicacion = añoPublicacion;
         this.disponible = true;
     }
@@ -42,6 +44,10 @@ public class Libro {
     public void setIsbn(String isbn) {
         this.isbn = isbn;
     }
+
+    public String getEditorial() {return editorial;}
+
+    public void setEditorial(String editorial) {this.editorial = editorial;}
     
     public int getAñoPublicacion() {
         return añoPublicacion;
@@ -61,7 +67,7 @@ public class Libro {
     
     @Override
     public String toString() {
-        return String.format("Libro: %s | Autor: %s | ISBN: %s | Año: %d | Disponible: %s",
-                titulo, autor, isbn, añoPublicacion, disponible ? "Sí" : "No");
+        return String.format("Libro: %s | Autor: %s | ISBN: %s | Editorial: %s | Año: %d | Disponible: %s",
+                titulo, autor, isbn, editorial, añoPublicacion, disponible ? "Sí" : "No");
     }
 }

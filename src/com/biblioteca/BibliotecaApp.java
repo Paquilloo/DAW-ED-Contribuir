@@ -89,9 +89,9 @@ public class BibliotecaApp {
     }
 
     private static void inicializarDatos() {
-        bibliotecaServicio.agregarLibro(new Libro("El Quijote", "Miguel de Cervantes", "978-8424936464", 1605));
-        bibliotecaServicio.agregarLibro(new Libro("Cien años de soledad", "Gabriel García Márquez", "978-0307474728", 1967));
-        bibliotecaServicio.agregarLibro(new Libro("1984", "George Orwell", "978-0451524935", 1949));
+        bibliotecaServicio.agregarLibro(new Libro("El Quijote", "Miguel de Cervantes", "978-8424936464", "RBA", 1605));
+        bibliotecaServicio.agregarLibro(new Libro("Cien años de soledad", "Gabriel García Márquez", "978-0307474728", "Debolsillo", 1967));
+        bibliotecaServicio.agregarLibro(new Libro("1984", "George Orwell", "978-0451524935", "Alma", 1949));
     }
 
     private static void listarLibros() {
@@ -102,11 +102,18 @@ public class BibliotecaApp {
     private static void agregarLibro() {
         System.out.println("\n=== AGREGAR NUEVO LIBRO ===");
         System.out.print("Título: ");
-        String titulo = scanner.nextLine();
+        String isbn = Libro.validarIsbn(scanner);
         System.out.print("Autor: ");
         String autor = scanner.nextLine();
         System.out.print("ISBN: ");
-        String isbn = Libro.validarIsbn(scanner);
+        String isbn = scanner.nextLine();
+        System.out.print("Editorial: ");
+        String editorial = scanner.nextLine();
+        System.out.print("Año de publicación: ");
+        int año = Integer.parseInt(scanner.nextLine());
+        
+        Libro libro = new Libro(titulo, autor, isbn, editorial, año);
+        
 
         int año = 0;
         boolean valido = false;

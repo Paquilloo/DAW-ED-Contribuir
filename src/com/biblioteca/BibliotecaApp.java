@@ -2,6 +2,8 @@ package com.biblioteca;
 
 import com.biblioteca.modelo.*;
 import com.biblioteca.servicio.*;
+
+import java.util.ArrayList;
 import java.time.LocalDate;
 import java.util.Scanner;
 
@@ -45,8 +47,14 @@ public class BibliotecaApp {
                     listarPrestamos();
                     break;
                 case 7:
+                    buscarLibroAvanzado();
+                    break;
+                    
+                case 8:
+
                     calificarLibro();
                     break;
+                    
                 case 0:
                     continuar = false;
                     System.out.println("¡Hasta pronto!");
@@ -66,7 +74,8 @@ public class BibliotecaApp {
         System.out.println("4. Prestar libro");
         System.out.println("5. Devolver libro");
         System.out.println("6. Listar préstamos activos");
-        System.out.println("7. Calificar libro");
+        System.out.println("7. Busqueda Avanzada");
+        System.out.println("8. Calificar libro");
         System.out.println("0. Salir");
         System.out.print("Seleccione una opción: ");
     }
@@ -163,6 +172,52 @@ public class BibliotecaApp {
         System.out.println("\n=== PRÉSTAMOS ACTIVOS ===");
         bibliotecaServicio.listarPrestamosActivos();
     }
+
+// Tareas:
+
+// Crear metodo busquedaAvanzada() con múltiples parámetros opcionales
+// Agregar opción en el menú con submenú de criterios
+// Mostrar resultados que coincidan con TODOS los criterios especificados
+
+    private static void buscarLibroAvanzado()
+    {
+
+        ArrayList<String> terminos = new ArrayList<>();
+
+        //--- TÍTULO
+
+        System.out.println("Introduce el TÍTULO, o ENTER para dejar en blanco");
+        terminos.add(scanner.nextLine());
+
+        //--- AUTOR
+
+        System.out.println("Introduce el AUTOR, o ENTER para dejar en blanco");
+        terminos.add(scanner.nextLine());
+
+        //--- ISBN
+
+        System.out.println("Introduce el ISBN, o ENTER para dejar en blanco");
+        terminos.add(scanner.nextLine());
+
+        // --- AÑO
+
+        System.out.println("Introduce el AÑO DE PUBLICACIÓN, o ENTER para dejar en blanco");
+
+        String input = scanner.nextLine();
+
+        String año;
+        if (input.isEmpty()) {
+            año = "";
+        } else {
+            año = input;
+        }
+
+        terminos.add(año);
+
+        bibliotecaServicio.buscarLibroAvanzado(terminos);
+
+    }
+
 
     private static void calificarLibro() {
         System.out.print("\nIngrese ISBN del libro: ");

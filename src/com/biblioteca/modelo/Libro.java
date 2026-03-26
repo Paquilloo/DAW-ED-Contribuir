@@ -10,9 +10,12 @@ public class Libro {
     private String titulo;
     private String autor;
     private String isbn;
+    private String editorial;
     private int añoPublicacion;
     private boolean disponible;
     private String genero;
+    
+    
 
     private ArrayList<String> usuarios = new ArrayList<>();
     private ArrayList<Integer> puntuaciones = new ArrayList<>();
@@ -20,9 +23,11 @@ public class Libro {
     private ArrayList<Calificacion> calificaciones = new ArrayList<>();
 
     public Libro(String titulo, String autor, String isbn, int añoPublicacion, String genero) {
+    public Libro(String titulo, String autor, String isbn, String editorial, int añoPublicacion) {
         this.titulo = titulo;
         this.autor = autor;
         this.isbn = isbn;
+        this.editorial = editorial;
         this.añoPublicacion = añoPublicacion;
         this.genero = genero;
         this.disponible = true;
@@ -99,6 +104,10 @@ public class Libro {
         this.isbn = isbn;
     }
 
+    public String getEditorial() {return editorial;}
+
+    public void setEditorial(String editorial) {this.editorial = editorial;}
+    
     public int getAñoPublicacion() {
         return añoPublicacion;
     }
@@ -125,9 +134,7 @@ public class Libro {
 
     @Override
     public String toString() {
-        return String.format(
-                "Libro: %s | Autor: %s | ISBN: %s | Año: %d | Disponible: %s",
-                titulo, autor, isbn, añoPublicacion, disponible ? "Sí" : "No"
-        );
+        return String.format("Libro: %s | Autor: %s | ISBN: %s | Editorial: %s | Año: %d | Disponible: %s",
+                titulo, autor, isbn, editorial, añoPublicacion, disponible ? "Sí" : "No");
     }
 }
